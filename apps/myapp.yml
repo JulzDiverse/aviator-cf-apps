@@ -1,0 +1,19 @@
+meta:
+  git:
+    app-name: <app-name>
+    ssh: <git-uri>
+    branch: master
+    trigger: false
+    private-key: |+
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEowIBALJDIFOWLEA9K9SJOX/MAG0ivT4JdCljeouau6UUhwzOXaN0C9Fr4vw8
+      RSv3SiBRfqZ/maDVz+9J9ex5T7KOBHELSFIJFSLKELFJK/TyX40OF+hOnBb1O91R
+      ... some more lines ...
+      GqRcQNuaMa6Q5G7bK25/LOAf8B5Dd1mHT7Dm2yp7l0AhTuHklHRz
+      -----END RSA PRIVATE KEY-----
+  cf:
+    api: <api-endpoint>
+    username: <cf-username>
+    password: <cf-password>
+    org: <cf-org>
+    space: <cf-space>

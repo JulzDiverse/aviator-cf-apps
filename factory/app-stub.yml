@@ -1,0 +1,26 @@
+jobs:
+- name: (( concat "cf-push-" meta.git.app-name ))
+  plan:
+  - get: (( grab meta.git.app-name ))
+    trigger: (( grab meta.git.trigger ))
+  - put: (( concat "resrouce-push-" meta.git.app-name ))
+    params:
+      manifest: (( concat meta.git.app-name "/manifest.yml" ))
+
+resources:
+- name: (( grab meta.git.app-name ))
+  type: git
+  check_every: 2m
+  source:
+    uri: (( grab meta.git.ssh ))
+    private_key: (( grab meta.git.private-key ))
+    branch: (( meta.git-branch ))
+
+- name: (( concat "resrouce-push-" meta.git.app-name ))
+  type: cf
+  source:
+    api: (( grab meta.cf.api ))
+    username: (( grab meta.cf.username ))
+    password: (( grab meta.cf.password ))
+    organization: (( grab meta.cf.org ))
+    space: (( grab meta.cf.space ))
