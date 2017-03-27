@@ -1,11 +1,12 @@
 spruce:
 - base: factory/app-stub.yml
   prune:
-  - meta 
+  - meta
   for_each_in: apps/
   to_dir: factory/tmp/
 - base: factory/pipeline-stub.yml
-  with_in: factory/tmp/
+  chain:
+  - with_in: factory/tmp/
   to: factory/pipeline.yml
 
 fly:
