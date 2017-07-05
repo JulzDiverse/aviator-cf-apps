@@ -32,10 +32,10 @@ You can add as many different app meta files to the `app` directory as you want.
 
 ## Run Aviator
 
-After you setup your meta configuration you can download the aviator cli tool (if not already happend) and execute the `aviator` cli tool with your `Concourse` target and a pipeline name:
+After you setup your meta configuration you can download the aviator cli tool (if not already happend) and execute the `aviator` cli tool: 
 
 ```
-$ aviator -t <target> -p <pipeline-name>
+$ aviator 
 ```
 
 That's It! ;)
