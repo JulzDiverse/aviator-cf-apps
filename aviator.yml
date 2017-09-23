@@ -2,16 +2,17 @@ spruce:
 - base: factory/app-stub.yml
   prune:
   - meta
-  for_each_in: apps/
-  regexp: ".*.(yml)"
-  to_dir: factory/tmp/
+  for_each:
+    in: apps/
+    regexp: ".*.(yml)"
+  to_dir: {{factory/}}
 - base: factory/pipeline-stub.yml
   merge:
-  - with_in: factory/tmp/
+  - with_in: {{factory/}}
     regexp: ".*.(yml)"
   to: factory/pipeline.yml
 
 fly:
-  target: yourFlyTarget
-  name: AnyPipelineName
+  target: $target
+  name: $name
   config: factory/pipeline.yml

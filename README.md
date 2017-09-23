@@ -1,6 +1,8 @@
 # Aviator - cf-app
 
-An `aviator` repository, which sets up a `Concourse` pipeline for your Cloud Foundry Apps. The pipeline pushs your app to Cloud Foundry on a git-commit.
+An `aviator` repository, which sets up a `Concourse` pipeline for your Cloud Foundry Apps. The pipeline pushs your app to Cloud Foundry triggered by commit.
+
+[Get Aviator](https://github.com/JulzDiverse/aviator#installation)
 
 ## Meta Configuration
 
@@ -32,10 +34,12 @@ You can add as many different app meta files to the `app` directory as you want.
 
 ## Run Aviator
 
-After you setup your meta configuration you can download the aviator cli tool (if not already happend) and execute the `aviator` cli tool: 
+After you setup your meta configuration just execute `aviator` as follows: 
 
 ```
-$ aviator 
+$ target=<flytarget> name=<pipeline-name> aviator 
 ```
+
+Note: make sure you are logged in with `fly` before you execute aviator. 
 
 That's It! ;)

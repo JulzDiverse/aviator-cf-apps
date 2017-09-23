@@ -14,7 +14,7 @@ resources:
   source:
     uri: (( grab meta.git.ssh ))
     private_key: (( grab meta.git.private-key ))
-    branch: (( meta.git-branch ))
+    branch: (( grab meta.git.branch ))
 
 - name: (( concat "resrouce-push-" meta.git.app-name ))
   type: cf
