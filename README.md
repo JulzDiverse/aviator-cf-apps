@@ -6,9 +6,11 @@ An `aviator` repository, which sets up a `Concourse` pipeline for your Cloud Fou
 
 ## Meta Configuration
 
+### Basic Configuration
+
 Open `app/myapp.yml` with the following content, replace the placeholders with your app information and rename the file to match your app name:
 
-```
+```yaml
 meta:
   git:
     app-name: <app-name>
@@ -30,7 +32,19 @@ meta:
     space: <cf-space>
  ```
 
-You can add as many different app meta files to the `app` directory as you want. The pipeline will be udpated with the new app.
+You can add as many app meta files to the `apps` directory as you want. To uptdate the pipeline with the newly added app just re-execute aviator. 
+
+### Add a preceding Job (e.g for unit-tests)
+
+You can add a preceding job to the cf-push job by adding additionally beside the `git` and `cf`, the `pre` section to the `meta` section in the app YAML file for an app:
+
+```yaml
+meta:
+  pre:
+    name: <job-name>
+    docker-image: <docker image to be used for that job>
+    script: <path to the script inside the git repository to be executed>
+```
 
 ## Run Aviator
 

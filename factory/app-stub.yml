@@ -1,9 +1,27 @@
 jobs:
+- name: (( grab meta.pre.name || "not-defined" ))
+  plan:
+  - get: (( grab meta.git.app-name ))
+    trigger: (( grab meta.git.trigger ))
+  - task: pre-step
+    config:
+        platform: linux
+        image_resource:
+          type: docker-image
+          source:
+            repository: (( grab meta.pre.docker-image || nil ))
+        run:
+          path: sh
+          args:
+          - (( grab meta.pre.script || nil ))
+
 - name: (( concat "cf-push-" meta.git.app-name ))
   plan:
   - get: (( grab meta.git.app-name ))
     trigger: (( grab meta.git.trigger ))
-  - put: (( concat "resrouce-push-" meta.git.app-name ))
+    passed:
+    - (( grab meta.pre.name || "(( prune ))" ))
+  - put: (( concat "cf-push-" meta.git.app-name ))
     params:
       manifest: (( concat meta.git.app-name "/manifest.yml" ))
 
@@ -16,7 +34,7 @@ resources:
     private_key: (( grab meta.git.private-key ))
     branch: (( grab meta.git.branch ))
 
-- name: (( concat "resrouce-push-" meta.git.app-name ))
+- name: (( concat "cf-push-" meta.git.app-name ))
   type: cf
   source:
     api: (( grab meta.cf.api ))

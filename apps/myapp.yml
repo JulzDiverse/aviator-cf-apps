@@ -1,9 +1,9 @@
 meta:
   git:
-    app-name: <app-name>
+    app-name: <app-name> 
     ssh: <git-uri>
     branch: master
-    trigger: false
+    trigger: true
     private-key: |+
       -----BEGIN RSA PRIVATE KEY-----
       MIIEowIBALJDIFOWLEA9K9SJOX/MAG0ivT4JdCljeouau6UUhwzOXaN0C9Fr4vw8
@@ -17,3 +17,9 @@ meta:
     password: <cf-password>
     org: <cf-org>
     space: <cf-space>
+
+  # uncomment the pre section to include a preceding job
+  #pre:
+    #name: <job-name>
+    #script: <path-to-script>
+    #docker-image: <image-name>

@@ -5,14 +5,15 @@ spruce:
   for_each:
     in: apps/
     regexp: ".*.(yml)"
-  to_dir: {{factory/}}
+  modify:
+    delete: "jobs.name:not-defined"
+  to_dir: {{temp/}}
 - base: factory/pipeline-stub.yml
   merge:
-  - with_in: {{factory/}}
-    regexp: ".*.(yml)"
-  to: factory/pipeline.yml
+  - with_in: {{temp/}}
+  to: pipeline.yml
 
 fly:
   target: $target
   name: $name
-  config: factory/pipeline.yml
+  config: pipeline.yml
