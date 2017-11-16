@@ -6,7 +6,8 @@ spruce:
     in: apps/
     regexp: ".*.(yml)"
   modify:
-    delete: "jobs.name:not-defined"
+    delete:
+    - "jobs.name:not-defined"
   to_dir: {{temp/}}
 - base: factory/pipeline-stub.yml
   merge:
