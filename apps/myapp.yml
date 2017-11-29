@@ -1,25 +1,22 @@
 meta:
   git:
-    app-name: <app-name> 
-    ssh: <git-uri>
-    branch: master
-    trigger: true
+    app-name: YOUR-APP-NAME
+    ssh: GITHUB-URI
+    branch: BRANCH
+    trigger: true # set to false if you don't want to trigger automatically 
     private-key: |+
       -----BEGIN RSA PRIVATE KEY-----
-      MIIEowIBALJDIFOWLEA9K9SJOX/MAG0ivT4JdCljeouau6UUhwzOXaN0C9Fr4vw8
-      RSv3SiBRfqZ/maDVz+9J9ex5T7KOBHELSFIJFSLKELFJK/TyX40OF+hOnBb1O91R
-      ... some more lines ...
-      GqRcQNuaMa6Q5G7bK25/LOAf8B5Dd1mHT7Dm2yp7l0AhTuHklHRz
+      some more lines here
       -----END RSA PRIVATE KEY-----
   cf:
-    api: <api-endpoint>
-    username: <cf-username>
-    password: <cf-password>
-    org: <cf-org>
-    space: <cf-space>
+    api: CF-API (e.g https://api.run.pivotal.io)
+    username: CF-USERNAME
+    password: CF-PASSWORD
+    org: CF-ORG
+    space: CF-SPACE
 
-  # uncomment the pre section to include a preceding job
-  #pre:
-    #name: <job-name>
-    #script: <path-to-script>
-    #docker-image: <image-name>
+  # uncomment the 'pre' section to include a preceding job (e.g run unit tests)
+  pre:
+    name: PRE-JOB-NAME
+    script: PATH-TO-SCRIPT # the path to the script inside your app git repository
+    docker-image: DOCKER-IMAGE-TO-USE

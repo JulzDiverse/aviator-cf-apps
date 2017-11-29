@@ -10,10 +10,12 @@ jobs:
           type: docker-image
           source:
             repository: (( grab meta.pre.docker-image || nil ))
+        inputs:
+        - name: (( grab meta.git.app-name ))
         run:
           path: sh
           args:
-          - (( grab meta.pre.script || nil ))
+          - (( concat meta.git.app-name "/" meta.pre.script || nil ))
 
 - name: (( concat "cf-push-" meta.git.app-name ))
   plan:
@@ -42,3 +44,4 @@ resources:
     password: (( grab meta.cf.password ))
     organization: (( grab meta.cf.org ))
     space: (( grab meta.cf.space ))
+    skip_cert_check: true
