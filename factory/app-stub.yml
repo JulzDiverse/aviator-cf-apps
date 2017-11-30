@@ -30,10 +30,9 @@ jobs:
 resources:
 - name: (( grab meta.git.app-name ))
   type: git
-  check_every: 2m
   source:
     uri: (( grab meta.git.ssh ))
-    private_key: (( grab meta.git.private-key ))
+    private_key: (( grab meta.git.private-key || "(( prune ))" ))
     branch: (( grab meta.git.branch ))
 
 - name: (( concat "cf-push-" meta.git.app-name ))
@@ -44,4 +43,6 @@ resources:
     password: (( grab meta.cf.password ))
     organization: (( grab meta.cf.org ))
     space: (( grab meta.cf.space ))
-    skip_cert_check: true
+    skip_cert_check: (( grab meta.cf.skip_cert_check ))
+    docker_username: (( grab meta.cf.docker_username || "(( prune ))" ))
+    docker_password: (( grab meta.cf.docker_password || "(( prune ))" ))
