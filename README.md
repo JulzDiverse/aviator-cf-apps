@@ -95,5 +95,5 @@ Requirements:
 
 - You have a Concourse server up and running
 - You have the Fly CLI installed on your machine. More info about Fly [here](https://concourse.ci/fly-cli.html)
-- You have a Cloud Foundry instance you can push your apps to (e.g IBM Cloud - Bluemix, Pivotal Cloud Foundry, etc.)
-	- you can create an trial bluemix account [here](https://console.bluemix.net/)
+- You have a Cloud Foundry instance you can push your apps to (e.g IBM Cloud - Bluemix, Pivotal Cloud Foundry, Bosh-Lite, etc.)
+	- You can create an trial IBM Bluemix account [here](https://console.bluemix.net/)
