@@ -71,7 +71,7 @@ meta:
     script: <path to the script inside the git repository to be executed>
 ```
 
-**PRE**
+**unit_test**
 
 - **name** (required): name of the job (e.g unit-test-myapp)
 - **docker-image**: the docker image that should be used to execute the job
