@@ -59,13 +59,13 @@ meta:
 - **docker_password** (optional): This should be the users password when authenticating against a protected docker registry.
 You can add as many app meta files to the `apps` directory as you want. To uptdate the pipeline with the newly added app just re-execute aviator. 
 
-### Add a preceding Job (e.g for unit-tests)
+### Add a Unit-Test Job 
 
 You can add a preceding job to the cf-push job by adding additionally - beside the `git` and `cf` - the `pre` section to the `meta` section in the app YAML file for an app:
 
 ```yaml
 meta:
-  pre:
+  unit_test:
     name: <job-name>
     docker-image: <docker image to be used for that job>
     script: <path to the script inside the git repository to be executed>

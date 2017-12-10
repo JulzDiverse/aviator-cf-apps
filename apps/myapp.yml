@@ -1,23 +1,23 @@
 meta:
-  #> Git-Resource setup: more info @ https://github.com/concourse/git-resource
+#> Git-Resource setup: more info @ https://github.com/concourse/git-resource
   git:
-    app-name: YOUR-APP-NAME
+    app-name: APP-NAME
     ssh: GITHUB-URI
     branch: BRANCH
 
-    #> set to false if you don't want your jobs
-    #> being triggered automatically
+#> set to false if you don't want your jobs
+#> being triggered automatically
     trigger: true
 
-    #> (optional) private key for the concourse git resource.
-    #> It is required when using a git ssh URI. Comment
-    #> the property + key to disable it.
+#> (optional) private key for the concourse git resource.
+#> It is required when using a git ssh URI. Comment
+#> the property + key to disable it.
     private-key: |+
       -----BEGIN RSA PRIVATE KEY-----
       some more lines here
       -----END RSA PRIVATE KEY-----
 
-  #> CF-Resource setup: more info @ https://github.com/concourse/cf-resource
+#> CF-Resource setup: more info @ https://github.com/concourse/cf-resource
   cf:
     api: CF-API #(e.g https://api.ng.bluemix.net)
     username: CF-USERNAME
@@ -26,18 +26,18 @@ meta:
     space: CF-SPACE
     skip_cert_check: true
 
-    #> (optional) This should be the name of the application that this will
-    #> re-deploy over. If this is set the resource will perform a
-    #> zero-downtime deploy. Uncomment the property to enable it.
+#> (optional) This should be the name of the application that this will
+#> re-deploy over. If this is set the resource will perform a
+#> zero-downtime deploy. Uncomment the property to enable it.
     #current_app_name: APP-NAME
 
-    #> (optional) docker user+password to authenticate against a protected
-    #> docker registry. Uncomment to enable it.
+#> (optional) docker user+password to authenticate against a protected
+#> docker registry. Uncomment to enable it.
     #docker_username: DOCKER-USER
     #docker_password: DOCKER-PW
 
-  #> (optional) uncomment the "pre" section to include a preceding job
-  #pre:
-    #name: PRE-JOB-NAME
+#> (optional) uncomment the "unit_test" section to include a preceding job
+  #unit_test:
+    #name: UNIT-TEST-JOB-NAME
     #script: PATH-TO-SCRIPT
     #docker-image: DOCKER-IMAGE-TO-USE

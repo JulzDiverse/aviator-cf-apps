@@ -1,28 +1,28 @@
 jobs:
-- name: (( grab meta.pre.name || "not-defined" ))
+- name: (( grab meta.unit_test.name || "not-defined" ))
   plan:
   - get: (( grab meta.git.app-name ))
     trigger: (( grab meta.git.trigger ))
-  - task: pre-step
+  - task: unit_test
     config:
         platform: linux
         image_resource:
           type: docker-image
           source:
-            repository: (( grab meta.pre.docker-image || nil ))
+            repository: (( grab meta.unit_test.docker-image || nil ))
         inputs:
         - name: (( grab meta.git.app-name ))
         run:
           path: sh
           args:
-          - (( concat meta.git.app-name "/" meta.pre.script || nil ))
+          - (( concat meta.git.app-name "/" meta.unit_test.script || nil ))
 
 - name: (( concat "cf-push-" meta.git.app-name ))
   plan:
   - get: (( grab meta.git.app-name ))
     trigger: (( grab meta.git.trigger ))
     passed:
-    - (( grab meta.pre.name || "(( prune ))" ))
+    - (( grab meta.unit_test.name || "(( prune ))" ))
   - put: (( concat "cf-push-" meta.git.app-name ))
     params:
       manifest: (( concat meta.git.app-name "/manifest.yml" ))
